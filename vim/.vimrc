@@ -45,6 +45,8 @@ Bundle "rodjek/vim-puppet"
 
 " Colourschemes {{{2
 Bundle "altercation/vim-colors-solarized"
+Bundle 'chriskempson/base16-vim'
+Bundle 'nanotech/jellybeans.vim'
 
 " VIM settings {{{1
 
@@ -143,11 +145,14 @@ set undofile
 
 " Colourscheme settings {{{2
 set background=dark
+set t_Co=256
 let g:solarized_termtrans=1
+
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
-colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace"
+colorscheme jellybeans
 
 " Custom mappings {{{2
 " Tagbar
