@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "suspending" > /tmp/susp
+/usr/bin/systemctl suspend

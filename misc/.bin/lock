@@ -1,0 +1,11 @@
+#!/bin/bash
+
+tmpfile=$(mktemp --tmpdir i3lock-wrapper-XXXXXXXXXX.png)
+
+rm -f /tmp/i3lock-*
+
+scrot -d0 "$tmpfile"
+convert "$tmpfile" -blur 0x8 -fill black -colorize 20% "$tmpfile"
+#feh "$tmpfile"
+i3lock -n -i "$tmpfile"
+
