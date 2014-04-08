@@ -52,7 +52,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin/vendor_perl/"
-PATH="$PATH:$HOME/.bin"
+PATH="$PATH:$HOME/.bin:$HOME/.sbin"
 
 # Turn on 256 color support...
 if [ "x$TERM" = "xterm" ]
