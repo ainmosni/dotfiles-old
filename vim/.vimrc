@@ -48,6 +48,10 @@ Bundle "altercation/vim-colors-solarized"
 Bundle 'chriskempson/base16-vim'
 Bundle 'nanotech/jellybeans.vim'
 
+" Tmux stuff {{{2
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'christoomey/vim-tmux-navigator'
+
 " VIM settings {{{1
 
 " Edit settings {{{2
