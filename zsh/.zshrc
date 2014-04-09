@@ -66,6 +66,9 @@ fi
 set COLORFGBG="lightgray;default"
 export COLORFGBG
 
+# dircolors
+eval "$(dircolors ~/.dircolors)"
+
 # set extended globbing
 setopt extended_glob
 
