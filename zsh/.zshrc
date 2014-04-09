@@ -6,6 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerline"
+POWERLINE_DETECT_SSH="True"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -67,6 +68,7 @@ export COLORFGBG
 # set extended globbing
 setopt extended_glob
 
+export EDITOR=vim
 # tmux hack
 if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
     unlink "$HOME/.ssh/agent_sock" 2>/dev/null
