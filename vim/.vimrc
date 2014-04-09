@@ -174,9 +174,6 @@ if has("autocmd")
     " Auto source vimrc
     autocmd BufWritePost .vimrc source $MYVIMRC
 
-    " Cleanup after ourselves
-    autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
-
     " Highlight keyword under cursor
     autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 endif
