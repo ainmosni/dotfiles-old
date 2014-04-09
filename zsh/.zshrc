@@ -7,6 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerline"
 POWERLINE_DETECT_SSH="True"
+POWERLINE_SHOW_GIT_ON_RIGHT="True"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
