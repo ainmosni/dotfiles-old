@@ -11,12 +11,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 setxkbmap 'us(altgr-intl)' &
-xmodmap /home/daniel/.Xmodmap &
+xmodmap ~/.Xmodmaprc &
 xset b 8 &
-xrdb /home/daniel/.Xresources &
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
-
 
 DEFAULT_SESSION=i3
 
