@@ -1,0 +1,7 @@
+# Compiled code
+*.pyc
+*.class
+# The vim persistent undo dir.
+.vim/undodir/*
+.netrwhist
+.vim/bundle/*
