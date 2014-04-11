@@ -1,4 +1,8 @@
 #!/bin/sh
 
-echo "suspending" > /tmp/susp
-/usr/bin/systemctl suspend
+if pgrep -f client.conf > /dev/null; then
+    echo 'not suspending' > /tmp/susp
+else
+    echo "suspending" > /tmp/susp
+    /usr/bin/systemctl suspend
+fi
