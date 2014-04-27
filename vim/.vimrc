@@ -35,6 +35,10 @@ Bundle "scrooloose/syntastic"
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 
+" Ultisnips
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 
 " Python enhancements {{{2
 Bundle "klen/python-mode"
@@ -222,3 +226,6 @@ let g:syntastic_always_populate_loc_list=1
 
 " Airline settings {{{2
 let g:airline_powerline_fonts = 1
+
+" Ultisnips options
+let g:ultisnips_python_style = "sphinx"
