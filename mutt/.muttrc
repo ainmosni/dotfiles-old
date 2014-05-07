@@ -262,5 +262,9 @@ macro index,pager \cb "<enter-command> set my_pdsave=\$pipe_decode<enter>\
 <pipe-message>extract_url<enter>\
 <enter-command> set pipe_decode=\$my_pdsave<enter>" "get URLs"
 
+# Open mail in browser, only needed for HTML mail that elinks fails to convert
+# to text.
+macro attach 'V' "<pipe-entry>cat > ~/.cache/mutt/mail.html && google-chrome-stable ~/.cache/mutt/mail.html<enter>"
+
 set alias_file=~/.mutt/aliases
 source ~/.mutt/aliases
