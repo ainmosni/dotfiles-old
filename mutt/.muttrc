@@ -256,5 +256,11 @@ macro index <F8> \
           "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/<enter><enter-command>set wait_key<enter>" \
           "search and reconstruct owning thread (using notmuch)"
 
+# url_extract macro
+macro index,pager \cb "<enter-command> set my_pdsave=\$pipe_decode<enter>\
+<enter-command> unset pipe_decode<enter>\
+<pipe-message>extract_url<enter>\
+<enter-command> set pipe_decode=\$my_pdsave<enter>" "get URLs"
+
 set alias_file=~/.mutt/aliases
 source ~/.mutt/aliases
