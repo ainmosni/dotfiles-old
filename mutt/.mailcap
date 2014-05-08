@@ -1,2 +1,3 @@
 text/html; elinks -dump %s; copiousoutput;
 image/*; /usr/bin/gthumb '%s'; test=test -n "$DISPLAY"
+application/pdf; { set -m \; /bin/mv -T %s %s.mv \; ( evince %s.mv \; /bin/rm %s.mv \; ) & } \; disown -a
