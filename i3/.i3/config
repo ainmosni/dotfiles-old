@@ -36,7 +36,7 @@ bindsym $mod+d exec gnome-do
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
-bindsym Control+$mod+b exec google-chrome-stable
+bindsym Control+$mod+b exec google-chrome-beta
 bindsym Control+$mod+t exec roxterm -n todo
 bindsym Control+$mod+minus exec roxterm -n scratch
 bindsym Control+$mod+x exec "xautolock -locknow"
