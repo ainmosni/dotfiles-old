@@ -17,9 +17,12 @@ class OnWriteHandler(pyinotify.ProcessEvent):
         self.watch_path = watch_path
         self.destination_path = destination_path
         self.exclusions = exclusions
-        self.cmd = '{} -avz --delete {} {}'.format(rsync_path,
-                                                   watch_path,
-                                                   destination_path)
+        cmd = [rsync_path, '-avz', '--delete']
+        if exclusions:
+            cmd += ['--exclude'] + exclusions
+        cmd += [watch_path, destination_path]
+        self.cmd = cmd
+        self.sync()
 
     def process_IN_MODIFY(self, event):
         print('===> {} got modified.'.format(event.pathname))
@@ -33,14 +36,14 @@ class OnWriteHandler(pyinotify.ProcessEvent):
         print('===> {} moved into our watchspace'.format(event.pathname))
         self.sync(event)
 
-    def sync(self, event):
-        if self.exclusions and self._is_excluded(event.pathname):
+    def sync(self, event=None):
+        if event and (self.exclusions and self._is_excluded(event.pathname)):
             print('===> {} is excluded'.format(event.pathname))
             return
 
         print('===> Syncing {} to {}'.format(self.watch_path,
                                              self.destination_path))
-        subprocess.check_output(self.cmd.split())
+        subprocess.check_output(self.cmd)
 
     def _is_excluded(self, string):
         for pattern in self.exclusions:

@@ -1,0 +1,3 @@
+xmodmap ~/.Xmodmaprc &
+xset b 8 &
+xrdb ~/.Xresources &

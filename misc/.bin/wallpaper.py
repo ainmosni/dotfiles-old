@@ -18,6 +18,6 @@ while True:
         w2 = random.choice(files)
         w3 = random.choice(files)
 
-    cmd = 'feh --bg-scale {} {} {}'.format(w1, w2, w3)
-    subprocess.call(cmd.split())
+    cmd = ['feh', '--bg-scale', w1, w2, w3]
+    subprocess.call(cmd)
     time.sleep(60*30)

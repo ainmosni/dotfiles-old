@@ -36,14 +36,14 @@ bindsym $mod+d exec gnome-do
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
-bindsym Control+$mod+b exec google-chrome-beta
+bindsym Control+$mod+b exec google-chrome-stable
 bindsym Control+$mod+t exec roxterm -n todo
 bindsym Control+$mod+minus exec roxterm -n scratch
 bindsym Control+$mod+x exec "xautolock -locknow"
 
 # VOLUME ADJUSTMENT
-bindsym XF86AudioRaiseVolume exec amixer set Master 5.0%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5.0%-
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
 
 # change focus
 bindsym $mod+h focus left
@@ -160,7 +160,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         position top
-        status_command i3status
+        status_command python ~/.bin/status_bar.py
+        workspace_buttons yes
+
         colors {
             background #444444
             }
@@ -174,4 +176,3 @@ exec --no-startup-id ssh-add
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id dropboxd start
 exec --no-startup-id ~/.bin/wallpaper.py
-exec --no-startup-id /usr/bin/pa-applet
