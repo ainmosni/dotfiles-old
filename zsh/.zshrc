@@ -85,4 +85,6 @@ then
     . ~/.zshrc.local
 fi
 
+eval "$(thefuck --alias)"
+
 unset GREP_OPTIONS
