@@ -3,6 +3,7 @@
 import subprocess
 
 from i3pystatus import Status
+from i3pystatus.updates import pacman, cower
 
 status = Status(standalone=True)
 
@@ -55,11 +56,6 @@ status.register("battery",
         "FULL": "Bat full",
     },)
 
-# Displays whether a DHCP client is running
-status.register("runwatch",
-    name="DHCP",
-    path="/var/run/dhcpcd*.pid",)
-
 # Shows the address and up/down state of eth0. If it is up the address is shown in
 # green (the default value of color_up) and the CIDR-address is shown
 # (i.e. 10.10.10.42/24).
@@ -67,17 +63,17 @@ status.register("runwatch",
 # (defaults of format_down and color_down)
 #
 # Note: the network module requires PyPI package netifaces
-status.register("network",
-    interface="eno1",
-    format_up="{v4cidr}",)
+#status.register("network",
+    #interface="eno1",
+    #format_up="{v4cidr}",)
 
 # Has all the options of the normal network and adds some wireless specific things
 # like quality and network names.
 #
 # Note: requires both netifaces and basiciw
-status.register("wireless",
-    interface="wlp2s0",
-    format_up="{essid} {quality:03.0f}%",)
+status.register("network",
+    interface="eno1",
+    format_up="{interface} -- {v4cidr} -- {essid} {quality_bar}%",)
 
 # Shows disk usage of /
 # Format:
@@ -86,6 +82,12 @@ status.register("disk",
     path="/",
     format="{used}/{total}G [{avail}G]",)
 
+status.register("pulseaudio")
+
+status.register("updates",
+                format="Updates: {count}",
+                format_no_updates="No updates",
+                backends = [pacman.Pacman(), cower.Cower()])
 
 status.run()
 
