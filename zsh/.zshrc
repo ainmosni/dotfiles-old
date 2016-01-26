@@ -26,7 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent git django extract python svn vim fabric extract pip booking zsh-syntax-highlighting archlinux golang pip gpg-agent)
+plugins=(ssh-agent git django extract python svn vim fabric extract pip booking zsh-syntax-highlighting archlinux golang pip gpg-agent colored-man-pages thefuck)
 
 # Are we on arch?
 if [[ -e /etc/arch-release ]]; then
@@ -85,6 +85,8 @@ then
     . ~/.zshrc.local
 fi
 
-eval "$(thefuck --alias)"
+export WORKON_HOME=~/.venv
+source /usr/bin/virtualenvwrapper.sh
 
+fortune -a
 unset GREP_OPTIONS
