@@ -14,9 +14,9 @@ status.register("clock",
     format="%Y-%m-%d %X",)
 
 status.register("weather",
-                format="Amsterdam: {current_temp}",
+                format="Berlin: {current_temp}",
                 colorize=True,
-                location_code="NLXX0002:1:NL")
+                location_code="GMXX0007")
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
 status.register("load")
