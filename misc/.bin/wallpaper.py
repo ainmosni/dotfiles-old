@@ -6,7 +6,7 @@ import os.path
 import time
 import subprocess
 
-wallpaper_path = os.path.expanduser('~/Dropbox/Wallpaper/')
+wallpaper_path = os.path.expanduser('~/Pictures/Wallpapers/')
 
 while True:
     files = glob.glob(wallpaper_path + '*')
