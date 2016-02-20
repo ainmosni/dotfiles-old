@@ -74,9 +74,9 @@ echo -n "   "
 rx_kib=$(( $rx_rate >> 10 ))
 rx_mib=$(( $rx_kib >> 10))
 if [[ "$rx_rate" -gt 1048576 ]]; then
-    echo -n "${rx_mib}M "
+    printf "%03dM " ${rx_mib}
 else
-    echo -n "${rx_kib}K "
+    printf "%03dK " ${rx_kib}
 fi
 
 # outgoing
@@ -84,7 +84,7 @@ echo -n " "
 tx_kib=$(( $tx_rate >> 10 ))
 tx_mib=$(( $tx_kib >> 10))
 if [[ "$tx_rate" -gt 1048576 ]]; then
-    echo -n "${tx_mib}M "
+    printf "%03dM " ${tx_mib}
 else
-    echo -n "${tx_kib}K "
+    printf "%03dK " ${tx_kib}
 fi
