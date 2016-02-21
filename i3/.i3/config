@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:ohsnapu 8
+font pango:Roboto 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -196,7 +196,7 @@ bar {
     position top
     status_command i3blocks
     i3bar_command i3bar
-    font pango:Ohsnap 10
+    font pango:Roboto Medium 10
     separator_symbol "|"
     tray_output DVI-D-0
     tray_padding 0
