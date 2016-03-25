@@ -222,7 +222,6 @@ exec --no-startup-id compton -b --shadow-exclude _GTK_FRAME_EXTENTS@:c
 exec --no-startup-id xautolock -time 3 -locker ~/.bin/lock -killtime 30 -killer ~/.bin/suspend -detectsleep
 exec --no-startup-id ssh-add
 exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id dropbox start
 exec --no-startup-id ~/.bin/wallpaper.py
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/notification-daemon-1.0/notification-daemon
