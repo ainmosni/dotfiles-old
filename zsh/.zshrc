@@ -7,8 +7,8 @@ export ZSH_CUSTOM=$HOME/.zsh-custom
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="bullet-train"
-POWERLINE_DETECT_SSH="True"
-POWERLINE_SHOW_GIT_ON_RIGHT="True"
+BULLETTRAIN_CONTEXT_SHOW="true"
+BULLETTRAIN_CONTEXT_DEFAULT_USER="daniel"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -84,6 +84,10 @@ fi
 if [ -f ~/.zshrc.local ]
 then
     . ~/.zshrc.local
+fi
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	BULLETTRAIN_IS_SSH_CLIENT=true
 fi
 
 export WORKON_HOME=~/.venv
