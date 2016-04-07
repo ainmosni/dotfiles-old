@@ -34,15 +34,18 @@ Bundle "ervandew/supertab"
 Bundle "scrooloose/syntastic"
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
+Bundle "Shougo/neocomplete.vim"
 
 " Ultisnips
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
-
 " Python enhancements {{{2
 Bundle "klen/python-mode"
 Bundle "davidhalter/jedi-vim"
+
+" Go enhancements {{{2
+Bundle "fatih/vim-go"
 
 " Assorted language enhancements {{{2
 Bundle "rodjek/vim-puppet"
@@ -81,9 +84,6 @@ set colorcolumn=80
 set nu
 set rnu
 
-" Set spell checker, set it to both British English and Dutch
-set spell
-set spelllang=en_gb,nl
 
 " Better Search
 set hlsearch
@@ -223,9 +223,23 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Syntastic settings {{{2
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Airline settings {{{2
 let g:airline_powerline_fonts = 1
 
 " Ultisnips options
 let g:ultisnips_python_style = "sphinx"
+
+" vim-go options
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+au BufRead,BufNewFile *.go set noet ts=4 sw=4
+
+" Neocomplete
+let g:neocomplete#enable_at_startup = 1

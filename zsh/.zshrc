@@ -27,7 +27,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent git django extract python svn vim fabric extract pip booking zsh-syntax-highlighting archlinux golang pip gpg-agent colored-man-pages thefuck)
+plugins=(ssh-agent git django extract python svn vim fabric extract pip booking zsh-syntax-highlighting archlinux golang pip gpg-agent colored-man-pages thefuck virtualenv virtualenvwrapper)
 
 # Are we on arch?
 if [[ -e /etc/arch-release ]]; then
@@ -90,8 +90,7 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	BULLETTRAIN_IS_SSH_CLIENT=true
 fi
 
-export WORKON_HOME=~/.venv
-source /usr/bin/virtualenvwrapper.sh
+export GOPATH=~/go
 
 fortune -a
 unset GREP_OPTIONS
