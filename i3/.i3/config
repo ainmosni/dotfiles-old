@@ -216,9 +216,9 @@ bar {
 
 }
 
-for_window [class="zeal"] floating enable
+for_window [class="Zeal" instance="zeal"] floating enable
 
-exec --no-startup-id compton -b --shadow-exclude _GTK_FRAME_EXTENTS@:c
+# exec --no-startup-id compton -b --shadow-exclude _GTK_FRAME_EXTENTS@:c
 exec --no-startup-id xautolock -time 3 -locker ~/.bin/lock -killtime 30 -killer ~/.bin/suspend -detectsleep
 exec --no-startup-id ssh-add
 exec --no-startup-id xmodmap ~/.Xmodmap
