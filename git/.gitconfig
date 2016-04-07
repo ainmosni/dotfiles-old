@@ -24,5 +24,7 @@ lg80 = "!git log --graph --color=always --abbrev-commit --date=relative --pretty
         rebase = true
 [log]
     decorate = short
+[commit]
+	gpgsign = true
 [include]
     path = ~/.gitconfig.private
