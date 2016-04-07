@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/dfranke/.offlineimap'
-let g:netrw_dirhist_2='/home/dfranke/Documents/Code/serverdb2/monitoring'
-let g:netrw_dirhist_3='/home/dfranke/tmp/dynamic_code_test/web'

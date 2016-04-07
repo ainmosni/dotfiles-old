@@ -5,4 +5,8 @@
 vim/.vim/undodir/*
 vim/.vim/session/*
 vim/.netrwhist
+vim/.vim/.netrwhist
 vim/.vim/bundle/*
+# Ssh stuff except the config
+ssh/.ssh/*
+!ssh/.ssh/config

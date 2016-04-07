@@ -1,8 +1,11 @@
 #!/bin/sh
 
-if pgrep -f client.conf > /dev/null; then
-    echo 'not suspending' > /tmp/susp
-else
+# Only suspend when not on power.
+# TODO: Detect if we're on a battery for this.
+if acpi | grep -q Discharging; then
     echo "suspending" > /tmp/susp
     /usr/bin/systemctl suspend
+else
+    echo 'not suspending' > /tmp/susp
+    exit 0
 fi

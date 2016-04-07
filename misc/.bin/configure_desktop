@@ -1,0 +1,18 @@
+#!/bin/bash
+
+sleep 0.5
+
+xrandr -q | grep DP2- | grep -q ' connected';
+if [ $? -eq 0 ];
+then
+    xrandr -d :0.0 --output DP2-1 --off
+    xrandr -d :0.0 --output DP2-2 --off
+    # Connected, turn screens on.
+    xrandr -d :0.0 --output DP2-1 --mode 1920x1080 --left-of eDP1
+    xrandr -d :0.0 --output DP2-2 --mode 1920x1080 --right-of eDP1
+else
+    # Disconnected, turn screens off
+    xrandr -d :0.0 --output DP2-1 --off
+    xrandr -d :0.0 --output DP2-2 --off
+fi
+
