@@ -5,7 +5,9 @@
 if acpi | grep -q Discharging; then
     echo "suspending" > /tmp/susp
     /usr/bin/systemctl suspend
-else
-    echo 'not suspending' > /tmp/susp
-    exit 0
 fi
+
+if acpi 2>&1 | grep -q 'No support'; then
+    /usr/bin/systemctl suspend
+fi
+
