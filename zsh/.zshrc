@@ -1,54 +1,49 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Load antigen
+source ~/.antigen/antigen.zsh
 
-export ZSH_CUSTOM=$HOME/.zsh-custom
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="bullet-train"
+# Load the oh-my-zsh library
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle extract
+antigen bundle python
+antigen bundle golang
+antigen bundle gpg-agent
+antigen bundle thefuck
+antigen bundle virtualenv
+antigen bundle virtualenvwrapper
+antigen bundle tmux
+antigen bundle colorize
+antigen bundle docker
+
+antigen bundle djui/alias-tips
+antigen bundle jocelynmallon/zshmarks
+antigen bundle unixorn/git-extra-commands
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle marzocchi/zsh-notify
+antigen bundle psprint/zsh-cmd-architect
+
+if [[ -e /etc/arch-release ]]; then
+    antigen bundle archlinux
+    antigen bundle systemd
+fi
+
+if [[ -e /etc/debian_version ]]; then
+    antigen bundle debian
+    antigen bundle command-not-found
+fi
+
+# Theme support
 BULLETTRAIN_CONTEXT_SHOW="true"
 BULLETTRAIN_CONTEXT_DEFAULT_USER="daniel"
+antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+# Apply all the antigen stuff
+antigen apply
 
-# Comment this out to disable weekly auto-update checks
-#DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent git extract python vim extract pip zsh-syntax-highlighting golang gpg-agent colored-man-pages thefuck virtualenv virtualenvwrapper)
-
-# Are we on arch?
-if [[ -e /etc/arch-release ]]; then
-    plugins=($plugins archlinux)
-fi
-
-# Is this a debian derivative?
-if [[ -e /etc/debian_version ]]; then
-    plugins=($plugins debian command-not-found)
-fi
-
-
+# en_DK for the only English locale with ISO datetime formats
 export LANG=en_DK.UTF-8
 export LC_ALL=en_DK.UTF-8
-# I want agent forwarding on. 
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-
-source $ZSH/oh-my-zsh.sh
-
-
-# Customize to your needs...
 
 # Turn on 256 color support...
 if [ "x$TERM" = "xterm" ]
@@ -56,33 +51,29 @@ then
     export TERM="xterm-256color"
 fi
 
-# Mutt colours
-set COLORFGBG="lightgray;default"
-export COLORFGBG
-
 # dircolors
 eval "$(dircolors ~/.dircolors)"
 
-# set extended globbing
-setopt extended_glob
+# Some ssh agent hacks
+if [ -S "$HOME/.gnupg/S.gpg-agent.ssh" ] ; then
+    export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+fi
 
-export EDITOR=vim
-# tmux hack
+# Enable agent in t-mux
 if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
     unlink "$HOME/.ssh/agent_sock" 2>/dev/null
     ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
     export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
 
+# Set bullet-train ssh mode on if we're in SSH
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	BULLETTRAIN_IS_SSH_CLIENT=true
 fi
 
+# Some final environment variables
 export GOPATH=~/go
+export PATH="$PATH:$HOME/.bin:$HOME/.sbin:${GOPATH}/bin"
 
+# Fortune for good measure
 fortune -a
-unset GREP_OPTIONS
-
-PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin/vendor_perl/"
-PATH="$PATH:$HOME/.bin:$HOME/.sbin"
-export PATH="${PATH}:${GOPATH}/bin"
