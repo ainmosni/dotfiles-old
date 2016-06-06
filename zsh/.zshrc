@@ -22,6 +22,7 @@ antigen bundle unixorn/git-extra-commands
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle marzocchi/zsh-notify
 antigen bundle psprint/zsh-cmd-architect
+antigen bundle supercrabtree/k
 
 if [[ -e /etc/arch-release ]]; then
     antigen bundle archlinux
@@ -74,6 +75,7 @@ fi
 # Some final environment variables
 export GOPATH=~/go
 export PATH="$PATH:$HOME/.bin:$HOME/.sbin:${GOPATH}/bin"
+export EDITOR=vim
 
 # Fortune for good measure
 fortune -a
