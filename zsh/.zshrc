@@ -23,6 +23,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle marzocchi/zsh-notify
 antigen bundle psprint/zsh-cmd-architect
 antigen bundle supercrabtree/k
+antigen bundle mollifier/cd-gitroot
 
 if [[ -e /etc/arch-release ]]; then
     antigen bundle archlinux
