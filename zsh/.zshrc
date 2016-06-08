@@ -35,9 +35,19 @@ if [[ -e /etc/debian_version ]]; then
     antigen bundle command-not-found
 fi
 
+# Add local settings before the theme and apply so that we can configure local
+# antigen settings.
+if [ -e ~/.zshrc.local ]; then
+    . ~/.zshrc.local
+fi
+
 # Theme support
 BULLETTRAIN_CONTEXT_SHOW="true"
-BULLETTRAIN_CONTEXT_DEFAULT_USER="daniel"
+# Only set default user if not overidden by local rc.
+if [ -z ${BULLETTRAIN_CONTEXT_DEFAULT_USER+x} ]; then
+    BULLETTRAIN_CONTEXT_DEFAULT_USER="daniel"
+fi
+
 antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
 # Apply all the antigen stuff
