@@ -12,7 +12,6 @@ antigen bundle gpg-agent
 antigen bundle thefuck
 antigen bundle virtualenv
 antigen bundle virtualenvwrapper
-antigen bundle tmux
 antigen bundle colorize
 antigen bundle docker
 
