@@ -40,21 +40,17 @@ if [ -e ~/.zshrc.local ]; then
     . ~/.zshrc.local
 fi
 
-# Theme support
-BULLETTRAIN_CONTEXT_SHOW="true"
-# Only set default user if not overidden by local rc.
-if [ -z ${BULLETTRAIN_CONTEXT_DEFAULT_USER+x} ]; then
-    BULLETTRAIN_CONTEXT_DEFAULT_USER="daniel"
-fi
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir root_indicator)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs virtualenv time)
 
-antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+antigen theme bhilburn/powerlevel9k powerlevel9k
 
 # Apply all the antigen stuff
 antigen apply
 
 # en_DK for the only English locale with ISO datetime formats
-export LANG=en_DK.UTF-8
-export LC_ALL=en_DK.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Turn on 256 color support...
 if [ "x$TERM" = "xterm" ]
@@ -84,8 +80,9 @@ fi
 
 # Some final environment variables
 export GOPATH=~/go
-export PATH="$PATH:$HOME/.bin:$HOME/.sbin:${GOPATH}/bin"
+export PATH="$PATH:$HOME/.bin:$HOME/.sbin:${GOPATH}/bin:/usr/local/bin"
 export EDITOR=vim
+
 
 # Fortune for good measure
 fortune -a

@@ -154,12 +154,9 @@ set undofile
 " Colourscheme settings {{{2
 set background=dark
 set t_Co=256
-let g:solarized_termtrans=1
 
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
 let base16colorspace=256  " Access colors present in 256 colorspace"
+let g:jellybeans_background_color_256='NONE'
 colorscheme jellybeans
 
 " Custom mappings {{{2
@@ -241,6 +238,9 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 au BufRead,BufNewFile *.go set noet ts=4 sw=4
+
+" YAML settings
+au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
