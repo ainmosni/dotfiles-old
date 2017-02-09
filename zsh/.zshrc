@@ -14,6 +14,7 @@ antigen bundle virtualenv
 antigen bundle virtualenvwrapper
 antigen bundle colorize
 antigen bundle docker
+antigen bundle postgres
 
 antigen bundle djui/alias-tips
 antigen bundle jocelynmallon/zshmarks
@@ -61,9 +62,10 @@ fi
 # dircolors
 eval "$(dircolors ~/.dircolors)"
 
+
 # Some ssh agent hacks
-if [ -S "$HOME/.gnupg/S.gpg-agent.ssh" ] ; then
-    export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+if [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ] ; then
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 fi
 
 # Enable agent in t-mux
