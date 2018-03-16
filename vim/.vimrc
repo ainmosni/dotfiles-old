@@ -4,6 +4,7 @@
 " Vundle init {{{2
 set nocompatible
 filetype off
+set shell=/bin/bash
 
 set rtp +=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -12,18 +13,10 @@ call vundle#rc()
 Bundle "gmarik/vundle"
 
 " General enhancements {{{2
-Bundle "godlygeek/tabular"
-Bundle "gregsexton/gitv"
 Bundle "kien/ctrlp.vim"
-Bundle "lambacck/python_matchit"
 Bundle "majutsushi/tagbar"
-Bundle "mileszs/ack.vim"
 Bundle "Raimondi/delimitMate"
-Bundle "scratch"
 Bundle "scrooloose/nerdcommenter"
-Bundle "terryma/vim-multiple-cursors"
-Bundle "tpope/vim-abolish"
-Bundle "tpope/vim-eunuch"
 Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-repeat"
 Bundle "tpope/vim-sensible"
@@ -34,21 +27,23 @@ Bundle "ervandew/supertab"
 Bundle "scrooloose/syntastic"
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
-Bundle "Shougo/neocomplete.vim"
+Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+Bundle 'dominikduda/vim_current_word'
+" Needs lua, maybe replace.
+""Bundle "Shougo/neocomplete.vim"
 
 " Ultisnips
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Python enhancements {{{2
+" Redo python setup once needed.
 Bundle "klen/python-mode"
 Bundle "davidhalter/jedi-vim"
 
 " Go enhancements {{{2
 Bundle "fatih/vim-go"
-
-" Assorted language enhancements {{{2
-Bundle "rodjek/vim-puppet"
 
 " Colourschemes {{{2
 Bundle "altercation/vim-colors-solarized"
@@ -175,8 +170,6 @@ if has("autocmd")
     " Auto source vimrc
     autocmd BufWritePost .vimrc source $MYVIMRC
 
-    " Highlight keyword under cursor
-    autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 endif
 
 
@@ -194,6 +187,9 @@ let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 " Python mode settings
 " We use jedi-vim instead of rope
 let g:pymode_rope = 0
+
+" Delimitmate options
+let delimitMate_expand_cr = 1
 
 " Documentation stuff
 let g:pymode_doc = 1
@@ -225,6 +221,8 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Airline settings {{{2
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
 
 " Ultisnips options
 let g:ultisnips_python_style = "sphinx"
@@ -239,8 +237,13 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 au BufRead,BufNewFile *.go set noet ts=4 sw=4
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " YAML settings
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
